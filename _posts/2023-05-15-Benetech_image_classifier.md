@@ -56,3 +56,28 @@ learn.fine_tune(10)
 *fastai's* `fine_tune()` function abstracts away a bunch of steps and makes things so much easier. It takes the pre-trained model weights (in this case *resnet18*), unfreezes the last few layers of the neural net, finds the optimal learning rate and trains for the number of epochs we ask it to train the new model. By transferring all the previous learnings, ie. the weights from the model training we do not need to train the entire model again and save on valuable time/processing resources. 
 
 After training for 10 epochs, we see that the error rate is already quite low, i.e. < 0.1%.
+
+The confusion matrix for the training dataset is below:
+
+{Insert CF matrix here}
+
+## Comparisons with resnet34
+
+We carry out a quick (and dirty) comparison with the more complex *resnet34* image model. I simply train both models for 4 epochs and check the time per epoch and error rates. The average results are listed below:
+
+| Model    | Average Time Per Epoch (in mins) | Error Rate | # of epochs |
+|----------|----------------------------------|------------|-------------|
+| resnet18 | 3:03                             | 0.001981   | 4           |
+| resnet34 | 4:58                             | 0.001568   | 4           |
+| resnet18 | 3:09                             | 0.001651   | 10          |
+
+We see that *resnet18* trains faster since its a less complext model and provides a similar accuracy in 10 epochs of training than that from *resnet34* in 4 epochs, which in-turn takes about 2 minutes more to train per epoch.
+
+
+## Final Thoughts
+
+I am not making any sort of recommendation here, just running a quick test between the models. The larger models will very obviously run better when we are trying to classify larger and more complex images, but for our use case of classifying graph images a simple resnet18 model should suffice. 
+
+The link to the notebook with the resnet34 model is [here](https://github.com/irocknrule/kaggle/blob/main/Bentech-Graphs/classify_images_resnet34.ipynb)
+
+Overall, this first step towards image classification shows us how easy it is to get an image classifier up and running using *fastai*. In upcoming posts, we will discuss the object detection and OCR prediction models we created as part of this Kaggle competition.
