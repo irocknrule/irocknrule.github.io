@@ -59,7 +59,7 @@ After training for 10 epochs, we see that the error rate is already quite low, i
 
 The confusion matrix for the training dataset is below:
 
-{Insert CF matrix here}
+![](/images/resnet18_confusion-matrix.png "Confusion matrix from training the model for 10 epochs using resnet18")
 
 ## Comparisons with resnet34
 
