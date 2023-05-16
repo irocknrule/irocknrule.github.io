@@ -1,3 +1,6 @@
+# Simple Image classification using *fastai*
+
+
 Kaggle has a large number of competitions of various types where there is generally a ready dataset of input data provided to help build models. While numerous people use the platform to compete, one of the other useful consequences of having such a platform is the opportunity to work on all these different types of problems with little ground-work needed in terms of data gathering. That is why i simply love working on the platform to identify different useful problems, coming up with solutions to learn on the way (and not necessarily play to win).
 
 Here we look at the first step in a really interesting problem called [**Benetech - Making Graphs Accessible**](https://www.kaggle.com/competitions/benetech-making-graphs-accessible/overview). The goal statement of this competition is: *"The goal of this competition is to extract data represented by four types of charts commonly found in STEM textbooks. You will develop an automatic solution trained on a graph dataset. Your work will help make reading graphs accessible to millions of students with a learning difference or disability."*
