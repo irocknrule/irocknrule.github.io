@@ -84,7 +84,7 @@ Viewing an instance of the dataloader gives us:
 
 `dls.show_batch(max_n=16)`
 
-[Insert vertbar input image here]
+![](/images/show_batch_input.png "An input batch of graph pictures being used for training. These images are from the Benetech Kaggle competition.")
 
 ### Model training
 We now create the generator and discriminator models (*fastai* uses critic, so we use that here):
@@ -111,11 +111,13 @@ After a quick training session of 5 epochs, we check our results:
 
 `learn.show_results(max_n=9, ds_idx=0)`
 
-(insert vertbar_5.png here)
+![](/images/vertbar_5-epochs.png "Training results for vertical bars after only 5 epochs. Note that in 5 epochs the random noise is trending away.")
+
 
 We can see that there is almost nothing that the generator has learned at this point in time, so the generated images are simply random noise with some initial patterns showing up. Since the overall batch size is 64 and the generated images are small (64x64) along with not having too many features in the dataset, we train for a further 500 epochs. Checking the results now shows some surprisingly cool results.
 
-(insert vertbar_500.png here). 
+![](/images/vertbar_250-epochs.png "Training results for vertical bars after 500 epochs. The overall structure of the vertical bar images have started showing up now.")
+
 
 We can now see that the general structure of the bar charts is coming together. We have text at the top for the chart title, the axes labels and titles are showing up and the vertical bars in different colors. There is no specific values or properly legible text for the labels and titles but the fact that the overall structure of these graphs are being generated after training for only a couple hours is really nice. 
 
