@@ -1,3 +1,5 @@
+# Generating images using Generative Adversarial Networks (GANs) 
+
 ## Introduction
 Generative models are currently extremely popular with text based models such as ChatGPT, Google Bard and so on capturing everyone's attention along-with image models such as DALL-E and Stable Diffusion using text prompts to generate images on the fly. While trying to learn more about how these models work, I came across a wonderful intro tutorial to Generative Adversarial Networks (GANs) in the MIT Deep Learning intro video series (1). Going down the GAN rabbit-hole as a side project while working on the **Benetech - Making Graphs Accessible** (https://www.kaggle.com/competitions/benetech-making-graphs-accessible/overview) competition was a whole lot of fun and while I only scratched the surface, it has been extremely enjoyable to dive deep and learn more of this exciting domain. 
 
