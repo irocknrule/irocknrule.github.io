@@ -96,8 +96,34 @@ critic = basic_critic (64, n_channels=3, n_extra_layers=1,
 
 ```
 
+An interesting note here is that the *LeakyReLU* activation function is used by the critic as the last layer. This is to guard against the *dying ReLU* problem where the neurons can get perpetually stuck outputting 0s for all inputs in a regular ReLU. Leaky ReLUs allow a small negative gradient to pass through thereby letting some information through the network to the generator. Some more very useful information is provided at [3](https://sthalles.github.io/intro-to-gans/)
 
+We now create the model and train for a few epochs to observe the start of the image generation process. 
+
+```
+learn = GANLearner.wgan(dls, generator, critic, opt_func = RMSProp)
+learn.fit(5, 2e-4, wd=0.)
+
+```
+
+### Model Outputs
+After a quick training session of 5 epochs, we check our results:
+
+`learn.show_results(max_n=9, ds_idx=0)`
+
+(insert vertbar_5.png here)
+
+We can see that there is almost nothing that the generator has learned at this point in time, so the generated images are simply random noise with some initial patterns showing up. Since the overall batch size is 64 and the generated images are small (64x64) along with not having too many features in the dataset, we train for a further 500 epochs. Checking the results now shows some surprisingly cool results.
+
+(insert vertbar_500.png here). 
+
+We can now see that the general structure of the bar charts is coming together. We have text at the top for the chart title, the axes labels and titles are showing up and the vertical bars in different colors. There is no specific values or properly legible text for the labels and titles but the fact that the overall structure of these graphs are being generated after training for only a couple hours is really nice. 
+
+## Conclusions
+GANs require a significant amount of training to generate realistic outputs with the timing needs dependent on the type of input pictures, their sizes, complexity and a bunch of other factors. As I dive deeper into this domain, I will write a few more posts with some really interesting results from current experiments which require training on the order of days. This was just an initial foray into this extremely interesting form of generative AI specifically using out of the box *fastai* code, again with little or no modifications. There are a bunch of experimentation currently in progress with different architectures which I will describe in a new post.
 
 ## References
 (1) MIT Intro to Deep learning - Lecture 3: [Deep Generative Modeling](https://www.youtube.com/watch?v=3G5hWM6jqPk)
 {2} Wasserstein GAN: https://arxiv.org/abs/1701.07875
+{3} A Short Introduction to Generative Adversarial Networks (https://sthalles.github.io/intro-to-gans/)
+
