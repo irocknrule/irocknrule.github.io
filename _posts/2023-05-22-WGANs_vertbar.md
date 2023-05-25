@@ -66,7 +66,7 @@ class GANLearner(Learner):
         return cls(dls, generator, critic, _tk_mean, _tk_diff, switcher=switcher, clip=clip, switch_eval=switch_eval, **kwargs)
 ```
 
-The `wgan()` function presents the implementation of the WGAN network and the associated paper regarding Wasserstein GAN is provided (2). It is an extremely interesting paper and I plan on posting a review of the paper soon (once i post the review, I will update the link here).
+The `wgan()` function presents the implementation of the WGAN network and the associated paper regarding Wasserstein GAN is provided at \[2\]. It is an extremely interesting paper and I plan on posting a review of the paper soon (once i post the review, I will update the link here).
 
 ### Experiment setup
 In the Kaggle Benetech competition, the training set contains almost ~7k images of vertical bar graphs, so we use that dataset in our experiment. 
@@ -98,14 +98,13 @@ critic = basic_critic (64, n_channels=3, n_extra_layers=1,
 
 ```
 
-An interesting note here is that the *LeakyReLU* activation function is used by the critic as the last layer. This is to guard against the *dying ReLU* problem where the neurons can get perpetually stuck outputting 0s for all inputs in a regular ReLU. Leaky ReLUs allow a small negative gradient to pass through thereby letting some information through the network to the generator. Some more very useful information is provided at [3](https://sthalles.github.io/intro-to-gans/)
+An interesting note here is that the *LeakyReLU* activation function is used by the critic as the last layer. This is to guard against the *dying ReLU* problem where the neurons can get perpetually stuck outputting 0s for all inputs in a regular ReLU. Leaky ReLUs allow a small negative gradient to pass through thereby letting some information through the network to the generator. Some more very useful information is provided at \[3\].
 
 We now create the model and train for a few epochs to observe the start of the image generation process. 
 
 ```
 learn = GANLearner.wgan(dls, generator, critic, opt_func = RMSProp)
 learn.fit(5, 2e-4, wd=0.)
-
 ```
 
 ### Model Outputs
@@ -126,8 +125,12 @@ We can now see that the general structure of the bar charts is coming together. 
 ## Conclusions
 GANs require a significant amount of training to generate realistic outputs with the timing needs dependent on the type of input pictures, their sizes, complexity and a bunch of other factors. As I dive deeper into this domain, I will write a few more posts with some really interesting results from current experiments which require training on the order of days. This was just an initial foray into this extremely interesting form of generative AI specifically using out of the box *fastai* code, again with little or no modifications. There are a bunch of experimentation currently in progress with different architectures which I will describe in a new post.
 
+The link to the notebook with the code discussed is here: (https://github.com/irocknrule/kaggle/blob/main/Bentech-Graphs/generate_graphs.ipynb)
+
 ## References
 (1) MIT Intro to Deep learning - Lecture 3: [Deep Generative Modeling](https://www.youtube.com/watch?v=3G5hWM6jqPk)
+
 {2} Wasserstein GAN: https://arxiv.org/abs/1701.07875
+
 {3} A Short Introduction to Generative Adversarial Networks (https://sthalles.github.io/intro-to-gans/)
 
