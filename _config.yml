@@ -42,7 +42,16 @@ kramdown:
   auto_ids: true
   hard_wrap: false
   syntax_highlighter: rouge
-layout: single
-classes: wide
+  
+defaults:
+  -
+    scope:
+      type: posts
+      path: _posts
+    values:
+      is_post: true
+      classes: wide
+  -
+      
       
 
