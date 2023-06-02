@@ -1,3 +1,6 @@
+toc: true
+classes: wide
+
 ## Paper review: Why do tree-based models still outperform deep learning on typical tabular data?
 
 Here I review the paper "Why do tree-based models still outperform deep learning on typical tabular data?" by Grinsztajn et. al [https://hal.science/hal-03723551v2/document] published at NeurIPS 20222. (Note: Figures in this post are from the paper)
