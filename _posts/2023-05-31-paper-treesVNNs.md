@@ -1,5 +1,7 @@
+---
 toc: true
 classes: wide
+---
 
 ## Paper review: Why do tree-based models still outperform deep learning on typical tabular data?
 
