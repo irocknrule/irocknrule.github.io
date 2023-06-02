@@ -20,7 +20,7 @@ Their primary contributions in this paper are:
 ## Results
 Tree based models are all much better than any of the DL models. The interesting result was that categorical features are not weaknesses in Neural Nets (NNs) on tabular data as performance gap exists even with only numerical features. 
 
-(insert figure 1)
+![](/images/Grinsztajn_paper_fig-1.png Tree based methods regularly outperforming the DL based methods on tabular data for both regression and classifcation tasks.")
 
 ## Digging deeper
 
@@ -32,7 +32,7 @@ The authors smooth the training set output with a Gaussian kernel smoother of va
 ### Finding 2: Uninformative features affect NNs more
 We can calculate feature importances for Random Forests and then drop those features with low scores with minimal affect on accuracy of our tree based model. This is a known feature engineering technique and helps reduce the overall size of the forest or number of decision trees. The authors show that often-times, removing almost the half the features does not affect the overall accuracy of a GBT but NNs with MLP like architectures are not robust to such low importance features. They show that *adding* these uninformative features results in a higher performance gap between MLPs and the other models. Tabular datasets generally have a high percentage of such uninformative features, so the authors argue that these result in worse accuracies for NN based models.
 
-(insert figure 4)
+![](/images/Grinsztajn_paper_fig-4.png Decrease in accuracy while adding uninformative features.")
 
 ### Finding 3: Tabular data is non invariant by rotation, so should be the learners.
 
