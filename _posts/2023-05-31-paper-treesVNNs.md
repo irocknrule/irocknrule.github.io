@@ -20,19 +20,19 @@ Their primary contributions in this paper are:
 ## Results
 Tree based models are all much better than any of the DL models. The interesting result was that categorical features are not weaknesses in Neural Nets (NNs) on tabular data as performance gap exists even with only numerical features. 
 
-![](/images/Grinsztajn_paper_fig-1.png Tree based methods regularly outperforming the DL based methods on tabular data for both regression and classifcation tasks.")
+![](/images/Grinsztajn_paper_fig-1.png "Tree based methods regularly outperforming the DL based methods on tabular data for both regression and classifcation tasks.")
 
 ## Digging deeper
 
 The authors now ask the question: Why do tree-based models perform better? We observe that the ensemble methods such as bagging (in RF) and boosting (in XGBoost) with weak learners such as decision trees always work better in the random search space. The authors try to find the inductive biases behind this characteristic. 
 
 ### Finding 1: NNs are biased to smooth solutions: 
-The authors smooth the training set output with a Gaussian kernel smoother of varying lengths which then prevents the models from learning irregular patterns of the target function. The tree based methods show a higher drop in accuracy compared to the NNs indicating that the latter are biased towards the smoother functions. This in turn suggests that the target functions in the datasets are irregular which NNs struggle to fit and is in line with prior research (rahaman 2019 ) indicating that NNs are biased towards low frequency functions. The authors then go on to suggest that adequate regularization and careful optimization may enable NNs to learn irregular patterns, so its not out of the realm of impossible but tree based approaches do this faster and more easily. This is an interesting finding and I especially like the kernel smoothing approach to uncover this feature of NNs.
+The authors smooth the training set output with a Gaussian kernel smoother of varying lengths which then prevents the models from learning irregular patterns of the target function. The tree based methods show a higher drop in accuracy compared to the NNs indicating that the latter are biased towards the smoother functions. This in turn suggests that the target functions in the datasets are irregular which NNs struggle to fit and is in line with prior research {Rahaman19} indicating that NNs are biased towards low frequency functions. The authors then go on to suggest that adequate regularization and careful optimization may enable NNs to learn irregular patterns, so its not out of the realm of impossible but tree based approaches do this faster and more easily. This is an interesting finding and I especially like the kernel smoothing approach to uncover this feature of NNs.
 
 ### Finding 2: Uninformative features affect NNs more
 We can calculate feature importances for Random Forests and then drop those features with low scores with minimal affect on accuracy of our tree based model. This is a known feature engineering technique and helps reduce the overall size of the forest or number of decision trees. The authors show that often-times, removing almost the half the features does not affect the overall accuracy of a GBT but NNs with MLP like architectures are not robust to such low importance features. They show that *adding* these uninformative features results in a higher performance gap between MLPs and the other models. Tabular datasets generally have a high percentage of such uninformative features, so the authors argue that these result in worse accuracies for NN based models.
 
-![](/images/Grinsztajn_paper_fig-4.png Decrease in accuracy while adding uninformative features.")
+![](/images/Grinsztajn_paper_fig-4.png "Decrease in accuracy while adding uninformative features.")
 
 ### Finding 3: Tabular data is non invariant by rotation, so should be the learners.
 
@@ -55,3 +55,5 @@ Overall this paper was surely a good read with some effective contributions. I l
 ## References
 
 {NG04}: Andrew Y. Ng. Feature selection, L 1 vs. L 2 regularization, and rotational invariance. In Twenty-First  International Conference on Machine Learning - ICML ’04, page 78, Banff, Alberta, Canada,  2004. ACM Press. doi: 10.1145/1015330.1015435.
+
+{Rahaman19}: Nasim Rahaman, Aristide Baratin, Devansh Arpit, Felix Draxler, Min Lin, Fred A. Hamprecht, Yoshua Bengio, and Aaron Courville. On the Spectral Bias of Neural Networks, May 2019.
